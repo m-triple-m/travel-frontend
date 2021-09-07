@@ -1,0 +1,41 @@
+<nb-layout>
+
+        <nb-layout-header>
+
+            <!-- always visible -->
+            <nb-actions size="medium">
+                <nb-action class="mt-4" nbTooltip="Home" nbTooltipIcon="home-outline" [routerLink]="['/blog/home']" routerLinkActive="router-link-active" >
+                    <h1 class="site-title">Musafir</h1>
+                </nb-action>
+                <nb-action nbTooltip="Home" nbTooltipIcon="home-outline" [routerLink]="['/blog/home']">Home</nb-action>
+                <nb-action nbTooltip="Home" nbTooltipIcon="home-outline" [routerLink]="['/app/signup']">About Us</nb-action>
+                <nb-action nbTooltip="Home" nbTooltipIcon="home-outline" [routerLink]="['/app/signup']">Any Queries?Contact Us</nb-action>
+              </nb-actions>
+
+              <!-- visible when not logged in -->
+              <nb-actions size="medium"  *ngIf="!userservice.loggedin">
+                <nb-action nbTooltip="Home" nbTooltipIcon="home-outline" [routerLink]="['/app/signup']">Register</nb-action>
+                <nb-action nbTooltip="Home" nbTooltipIcon="home-outline" [routerLink]="['/app/signin']">Login</nb-action>
+              </nb-actions>
+
+              <!-- visible when logged in -->
+              <nb-actions size="medium" *ngIf="userservice.loggedin">
+                <nb-action nbTooltip="Home" nbTooltipIcon="home-outline" [routerLink]="[userservice.currentUser.isadmin?'/admin':'/user']" >{{userservice.currentUser.isadmin?'Admin Dashboard': 'User Dashboard'}}</nb-action>
+                <nb-action nbTooltip="Home" nbTooltipIcon="home-outline" (click)="userservice.logout()">Logout</nb-action>
+              </nb-actions>
+
+              <nb-user *ngIf="userservice.loggedin"
+             size="large"
+             [name]="userservice.currentUser.fullname"
+             [title]="userservice.currentUser.email"
+             [picture]="url+userservice.currentUser.avatar"
+             [routerLink]="[userservice.currentUser.isadmin?'/admin':'/user']">
+        </nb-user>
+        </nb-layout-header>
+        
+        <nb-layout-column>
+            <router-outlet>
+                
+            </router-outlet>
+    </nb-layout-column>
+</nb-layout>

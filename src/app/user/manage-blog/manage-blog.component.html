@@ -1,0 +1,31 @@
+<div class="col-md-11 mx-auto mt-5">
+
+    <nb-card accent="primary">
+        <nb-card-header>
+            <p class="h4">Manage Your Blogs</p>
+        </nb-card-header>
+        <nb-card-body>
+            <nb-accordion *ngIf="blogsList">
+                <nb-accordion-item *ngFor="let blog of blogsList">
+                  <nb-accordion-item-header>
+                    {{blog.title}}
+                  </nb-accordion-item-header>
+                  <nb-accordion-item-body>
+                    {{blog.desc}}
+                    <div class="row mt-5">
+                        <div class="col text-center">
+                            <button class="col-10" nbButton (click)="updateBlog(blog._id)">Edit</button>
+                        </div>
+                        <div class="col text-center">
+                            <button class="col-10" nbButton [routerLink]="['/blog/view', blog._id]">View</button>
+                        </div>
+                        <div class="col text-center">
+                            <button class="col-10" nbButton hero (click)="deleteBlog(blog._id)" status="danger">Delete</button>
+                        </div>
+                    </div>
+                  </nb-accordion-item-body>
+                </nb-accordion-item>
+            </nb-accordion>
+        </nb-card-body>
+    </nb-card>
+</div>

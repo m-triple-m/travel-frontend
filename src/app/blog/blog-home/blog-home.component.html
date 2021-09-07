@@ -1,0 +1,160 @@
+<div class="col-11 mx-auto">
+    <!-- Intro -->
+    <section id="intro">
+        <a href="#" class="logo"><img src="assets/title.jpeg" alt="" /></a>
+        <header>
+            <h2>Musafir</h2>
+            <p>A Travel Blogging Website</p>
+        </header>
+    </section>
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-push-9">
+            <!-- Sidebar -->
+            <section id="sidebar">
+                <!-- Mini Posts -->
+                <section *ngIf="trendingBlogs">
+                    <div class="mini-posts">
+    
+                        <!-- Mini Post -->
+                        <article class="mini-post" *ngFor="let blog of trendingBlogs">
+                            <header>
+                                <h3><a [routerLink]="['/blog/view', blog._id]" >{{blog.title}}</a></h3>
+                                <time class="published">{{blog.created | date}}</time>
+                                <a [routerLink]="['/blog/view', blog._id]" class="author"><img [src]="url+blog.author.avatar" alt="" /></a>
+                            </header>
+                    <div class="thumbnail" [ngStyle]="{background: 'url('+url+blog.thumb+') no-repeat top', height: '10rem', backgroundSize: 'cover'}"></div>
+
+                        </article>
+    
+                    </div>
+                </section>
+    
+                <!-- Posts List -->
+                <section>
+                    <ul class="posts">
+                        <li>
+                            <article>
+                                <header>
+                                    <h3><a href="single.html">Lorem ipsum fermentum ut nisl vitae</a></h3>
+                                    <time class="published" datetime="2015-10-20">October 20, 2015</time>
+                                </header>
+                                <a href="single.html" class="image"><img src="assets/images/pic08.jpg" alt="" /></a>
+                            </article>
+                        </li>
+                        <li>
+                            <article>
+                                <header>
+                                    <h3><a href="single.html">Convallis maximus nisl mattis nunc id lorem</a></h3>
+                                    <time class="published" datetime="2015-10-15">October 15, 2015</time>
+                                </header>
+                                <a href="single.html" class="image"><img src="assets/images/pic09.jpg" alt="" /></a>
+                            </article>
+                        </li>
+                        <li>
+                            <article>
+                                <header>
+                                    <h3><a href="single.html">Euismod amet placerat vivamus porttitor</a></h3>
+                                    <time class="published" datetime="2015-10-10">October 10, 2015</time>
+                                </header>
+                                <a href="single.html" class="image"><img src="assets/images/pic10.jpg" alt="" /></a>
+                            </article>
+                        </li>
+                        <li>
+                            <article>
+                                <header>
+                                    <h3><a href="single.html">Magna enim accumsan tortor cursus ultricies</a></h3>
+                                    <time class="published" datetime="2015-10-08">October 8, 2015</time>
+                                </header>
+                                <a href="single.html" class="image"><img src="assets/images/pic11.jpg" alt="" /></a>
+                            </article>
+                        </li>
+                        <li>
+                            <article>
+                                <header>
+                                    <h3><a href="single.html">Congue ullam corper lorem ipsum dolor</a></h3>
+                                    <time class="published" datetime="2015-10-06">October 7, 2015</time>
+                                </header>
+                                <a href="single.html" class="image"><img src="assets/images/pic12.jpg" alt="" /></a>
+                            </article>
+                        </li>
+                    </ul>
+                </section>
+    
+                <!-- About -->
+                <section class="blurb">
+                    <h2>About</h2>
+                    <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod
+                        amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.
+                    </p>
+                    <ul class="actions">
+                        <li><a href="#" class="button">Learn More</a></li>
+                    </ul>
+                </section>
+    
+                <!-- Footer -->
+                <section id="footer">
+                    <ul class="icons">
+                        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+                        <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
+                    <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a
+                            href="http://unsplash.com">Unsplash</a>.</p>
+                </section>
+    
+            </section>
+    
+        </div>
+        <div class="col-sm-9 col-sm-pull-3 main-cards">
+            <!-- Main -->
+
+            <nb-search type="rotate-layout" placeholder="Search Blog..."></nb-search>
+
+            <div id="main">
+    
+                <!-- Post -->
+                <article class="post" *ngFor="let blog of blogsList" ngsReveal>
+                    <header>
+                        <div class="title">
+                            <h2><a [routerLink]="['/blog/view/', blog._id]" routerLinkActive="router-link-active" >{{blog.title}}</a></h2>
+                            <p>{{blog.desc}}</p>
+                        </div>
+                        <div class="meta">
+                            <time class="published" datetime="2015-11-01">{{blog.created | date}}</time>
+                            <a href="#" class="author"><span class="name">{{blog.author.fullname}}</span><img [src]="url+blog.author.avatar"
+                                    alt="" /></a>
+                        </div>
+                    </header>
+                    <div class="thumbnail" [ngStyle]="{background: 'url('+url+blog.thumb+') no-repeat top', height: '30rem', backgroundSize: 'cover'}">
+
+                    </div>
+                    <!-- <a href="single.html" class="image featured"><img [src]="url+blog.thumb" alt="" /></a> -->
+                    <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod
+                        placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non
+                        congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta
+                        lectus vitae, ultricies congue gravida diam non fringilla.</p>
+                    <footer>
+                        <ul class="actions">
+                            <li><a [routerLink]="['/blog/view/', blog._id]" class="button large">Continue Reading</a></li>
+                        </ul>
+                        <ul class="stats">
+                            <li><a href="#">General</a></li>
+                            <li><a href="#" class="icon solid fa-heart">28</a></li>
+                            <li><a href="#" class="icon solid fa-comment">128</a></li>
+                        </ul>
+                    </footer>
+                </article>
+    
+                <!-- Pagination -->
+                <ul class="actions pagination">
+                    <li><a href="" class="disabled button large previous">Previous Page</a></li>
+                    <li><a href="#" class="button large next">Next Page</a></li>
+                </ul>
+    
+            </div>
+        </div>
+    </div>
+</div>

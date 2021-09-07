@@ -1,0 +1,67 @@
+<div id="wrapper">
+    <!-- Main -->
+        
+
+</div>
+
+<div id="main" *ngIf="blogData">
+
+    <!-- Post -->
+        <article class="post">
+            <header>
+                <div class="title">
+                    <h2><a href="#">{{blogData.title}}</a></h2>
+                    <p>{{blogData.desc}}</p>
+                </div>
+                <div class="meta">
+                    <time class="published" datetime="2015-11-01">{{blogData.created | date}}</time>
+                    <a href="#" class="author"><span class="name">{{blogData.author.fullname}}</span><img [src]="url+blogData.author.avatar" alt="" /></a>
+                </div>
+            </header>
+            <span class="image featured"><img [src]="url+blogData.thumb" alt="" /></span>
+            
+            <div id="blog-body">
+                <markdown id="blog-body" style="font-size: 1.5em;" [data]="blogData.data.body"></markdown>
+            </div>
+
+            <footer>
+                <ul class="stats">
+                    <li><a href="#">General</a></li>
+                    <li><a class="icon solid fa-heart">
+                        <nb-icon (click)="addLike()" icon="arrow-circle-up-outline" status="primary"></nb-icon>&nbsp;<span class="h6">{{blogData.likes}}</span>
+                    </a></li>
+                    <li><a href="#" class="icon solid fa-comment">128</a></li>
+                </ul>
+            </footer>
+        </article>
+
+        <div class="comment-section">
+            <div class="comment-form" *ngIf="userservice.loggedin">
+                <mat-form-field class="w-100">
+                    <textarea matInput style="border-radius: 5px;" rows="5" #commenttext></textarea>
+                </mat-form-field>
+                <button nbButton hero status="primary" (click)="addComment(commenttext.value)">Add Comment</button>
+            </div>
+
+            <div class="comment-list">
+                <div class="comment" *ngFor="let comment of blogData.comments">
+                    <h2>{{comment.text}}</h2>
+                    <p>{{comment.created | date}}</p>
+                </div>
+            </div>
+
+        </div>
+
+</div>
+
+<!-- Footer -->
+<section id="footer">
+    <ul class="icons">
+        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+        <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+    <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+</section>
