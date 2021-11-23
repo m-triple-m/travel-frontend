@@ -37,7 +37,7 @@ import { ManageBlogComponent } from './user/manage-blog/manage-blog.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { NgsRevealModule } from 'ngx-scrollreveal';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
-import { ChartsModule } from 'ng2-charts';
+// import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,7 @@ import { ChartsModule } from 'ng2-charts';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ChartsModule,
+    // ChartsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbEvaIconsModule,
